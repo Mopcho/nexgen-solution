@@ -1,0 +1,82 @@
+{
+    "name": "react-typescript-webpack",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "webpack serve --config webpack/webpack.config.js --env env=dev",
+        "build": "webpack --config webpack/webpack.config.js --env env=prod",
+        "lint": "eslint --fix \"./src**/*.{js,jsx,tsx,json}\"",
+        "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Mopcho/react-typescript-webpack.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Mopcho/react-typescript-webpack/issues"
+    },
+    "homepage": "https://github.com/Mopcho/react-typescript-webpack#readme",
+    "dependencies": {
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "styled-components": "^5.3.6"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.20.5",
+        "@babel/plugin-transform-runtime": "^7.19.6",
+        "@babel/preset-env": "^7.20.2",
+        "@babel/preset-react": "^7.18.6",
+        "@babel/preset-typescript": "^7.18.6",
+        "@babel/runtime": "^7.20.6",
+        "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
+        "@types/react": "^18.0.26",
+        "@types/react-dom": "^18.0.9",
+        "@types/styled-components": "^5.1.26",
+        "@typescript-eslint/eslint-plugin": "^5.48.1",
+        "@typescript-eslint/parser": "^5.48.1",
+        "babel-loader": "^9.1.0",
+        "copy-webpack-plugin": "^11.0.0",
+        "css-loader": "^6.7.2",
+        "eslint": "^8.31.0",
+        "eslint-config-airbnb": "^19.0.4",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-airbnb-typescript": "^17.0.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-config-react-app": "^7.0.1",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-jsx-a11y": "^6.7.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "eslint-plugin-react": "^7.31.11",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "html-webpack-plugin": "^5.5.0",
+        "husky": "^4.3.8",
+        "lint-staged": "^13.1.0",
+        "postcss-loader": "^7.0.2",
+        "prettier": "^2.8.2",
+        "react-refresh": "^0.14.0",
+        "style-loader": "^3.3.1",
+        "typescript": "^4.9.3",
+        "webpack": "^5.75.0",
+        "webpack-bundle-analyzer": "^4.7.0",
+        "webpack-cli": "^5.0.1",
+        "webpack-dev-server": "^4.11.1",
+        "webpack-merge": "^5.8.0"
+    },
+    "lint-staged": {
+        "src/**/*.{js,jsx,ts,tsx,json}": [
+            "eslint --fix"
+        ],
+        "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+            "prettier --write"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    }
+}
