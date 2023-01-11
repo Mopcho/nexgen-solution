@@ -31,11 +31,6 @@ const FormStyled = styled.form`
     display: inline-block;
   }
 
-  input[type='radio'] {
-    display: inline-block;
-    margin-right: 10px;
-  }
-
   input[type='text'],
   input[type='password'],
   textarea {
@@ -53,7 +48,6 @@ const FormStyled = styled.form`
     border-radius: 4px;
     cursor: pointer;
     width: auto;
-    margin: 20px 0;
 
     &:hover {
       background-color: #003566;
