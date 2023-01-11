@@ -1,3 +1,5 @@
+import { FormData } from '../views/Form/FormModel';
+
 class PostBinService {
   constructor(postbinUrl: string) {
     this.postbinUrl = postbinUrl;
@@ -7,7 +9,7 @@ class PostBinService {
 
   getBin = async () => {
     try {
-      const rawResponse = await fetch(this.postbinUrl, { mode: 'no-cors' });
+      const rawResponse = await fetch(this.postbinUrl);
       const response = await rawResponse.json();
       return response;
     } catch (err) {
@@ -19,10 +21,9 @@ class PostBinService {
     try {
       const rawResponse = await fetch(this.postbinUrl, {
         method: 'POST',
-        mode: 'no-cors',
-        body: formData,
+        body: JSON.stringify(formData),
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },
       });
       const response = await rawResponse.json();

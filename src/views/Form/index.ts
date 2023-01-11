@@ -3,9 +3,7 @@ import { FormView } from './FormView';
 import { FormModel } from './FormModel';
 import PostBinService from '../../service/postbin';
 
-export const postbinService = new PostBinService(
-  'https://www.toptal.com/developers/postbin/1673447331127-9832910569384'
-);
+export const postbinService = new PostBinService('https://enqbr0y95vpih.x.pipedream.net');
 const model = new FormModel();
 const controller = new FormController({
   model,

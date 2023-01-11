@@ -9,18 +9,14 @@ const FormStyled = styled.form`
   border-radius: 10px;
   background-color: #f1faee;
 
-  input {
-    margin-bottom: 10px;
-  }
-
   span {
     color: red;
+    margin-bottom: 10px;
   }
 
   label {
     font-weight: bold;
     display: block;
-    margin: 5px 0px;
   }
 
   label[for='gender-male'],
@@ -36,7 +32,6 @@ const FormStyled = styled.form`
   input[type='password'],
   textarea {
     padding: 10px;
-    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 100%;
@@ -67,7 +62,6 @@ const FormStyled = styled.form`
 
   .gender-inputs {
     display: flex;
-    padding: 20px 0px;
   }
 
   textarea {
@@ -83,6 +77,14 @@ const FormStyled = styled.form`
   input[type='radio'] {
     display: inline-block;
     margin: 0px 20px;
+  }
+
+  .form-field {
+    padding: 15px 0px;
+  }
+
+  input[for='termsAndServices'] {
+    margin-left: 5px;
   }
 `;
 

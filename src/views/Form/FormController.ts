@@ -151,18 +151,8 @@ export class FormController {
       // Here we are making a formData as PostBin blocks us with CORS, so we
       // are forced to use the 'no-cors' mode which allows us to send only
       // application/x-www-form-urlencoded or text/plain or multipart/form-data
-      const formData = new FormData();
-      formData.append('firstName', this.model.state.formData.firstName);
-      formData.append('lastName', this.model.state.formData.lastName);
-      formData.append('email', this.model.state.formData.email);
-      formData.append('password', this.model.state.formData.password);
-      formData.append('biography', this.model.state.formData.biography);
-      formData.append('dob', this.model.state.formData.dob);
-      formData.append('favoriteColor', this.model.state.formData.favoriteColor);
-      formData.append('gender', this.model.state.formData.gender);
-      formData.append('termsAndServices', this.model.state.formData.termsAndServices.toString());
       // Submit if no errors
-      await this.postbinService.postToBin(formData);
+      await this.postbinService.postToBin(this.model.state.formData);
     } catch (err) {
       console.error(err);
     } finally {

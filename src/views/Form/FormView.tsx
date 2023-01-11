@@ -72,127 +72,141 @@ export class FormView extends React.Component<FormProps> {
           </div>
           <br />
 
-          <label htmlFor="email">
-            Email:
-            <input
-              type="text"
-              id="email"
-              name="email"
-              value={this.model.state.formData.email}
-              onChange={this.controller.onChange}
-              placeholder="Email..."
-            />
-          </label>
-          {this.model.state.formErrors.email ? (
-            <span>{this.model.state.formErrors.email}</span>
-          ) : null}
-          <br />
-
-          <label htmlFor="password">
-            Password:
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={this.model.state.formData.password}
-              onChange={this.controller.onChange}
-              placeholder="Password..."
-            />
-          </label>
-          {this.model.state.formErrors.password ? (
-            <span>{this.model.state.formErrors.password}</span>
-          ) : null}
-
-          <label htmlFor="biography">
-            Biography:
-            <textarea
-              id="biography"
-              name="biography"
-              value={this.model.state.formData.biography}
-              onChange={this.controller.handleTextAreaChange}
-              placeholder="Biography..."
-            />
-          </label>
-          {this.model.state.formErrors.biography ? (
-            <span>{this.model.state.formErrors.biography}</span>
-          ) : null}
-
-          <label htmlFor="dob">
-            Date of Birth:
-            <input
-              type="date"
-              id="dob"
-              name="dob"
-              value={this.model.state.formData.dob}
-              onChange={this.controller.onChange}
-              placeholder="Date Of Birth..."
-            />
-          </label>
-          <br />
-          {this.model.state.formErrors.dob ? <span>{this.model.state.formErrors.dob}</span> : null}
-
-          <label htmlFor="favoriteColor">
-            Favorite Color:
-            <input
-              type="color"
-              id="favoriteColor"
-              name="favoriteColor"
-              value={this.model.state.formData.favoriteColor}
-              onChange={this.controller.onChange}
-              placeholder="Favourite Color"
-            />
-          </label>
-          {this.model.state.formErrors.favoriteColor ? (
-            <span>{this.model.state.formErrors.favoriteColor}</span>
-          ) : null}
-          <br />
-
-          <div className="gender-inputs">
-            <label htmlFor="gender">
-              Male:
+          <div className="form-field">
+            <label htmlFor="email">
+              Email:
               <input
-                type="radio"
-                id="male"
-                name="gender"
-                value="male"
-                checked={this.model.state.formData.gender === 'male'}
+                type="text"
+                id="email"
+                name="email"
+                value={this.model.state.formData.email}
                 onChange={this.controller.onChange}
-                placeholder="Gender..."
+                placeholder="Email..."
               />
             </label>
-            <label htmlFor="gender">
-              Female:
-              <input
-                type="radio"
-                id="female"
-                name="gender"
-                value="female"
-                checked={this.model.state.formData.gender === 'female'}
-                onChange={this.controller.onChange}
-                placeholder="Gender..."
-              />
-            </label>
+            {this.model.state.formErrors.email ? (
+              <span>{this.model.state.formErrors.email}</span>
+            ) : null}
+            <br />
           </div>
-          {this.model.state.formErrors.gender ? (
-            <span>{this.model.state.formErrors.gender}</span>
-          ) : null}
 
-          <label htmlFor="termsAndServices">
-            Agree to Terms And Services:
-            <input
-              type="checkbox"
-              id="termsAndServices"
-              name="termsAndServices"
-              checked={this.model.state.formData.termsAndServices}
-              onChange={this.controller.handleCheckboxChange}
-              placeholder="Terms and Services..."
-            />
-          </label>
-          <br />
-          {this.model.state.formErrors.termsAndServices ? (
-            <span>{this.model.state.formErrors.termsAndServices}</span>
-          ) : null}
-          <br />
+          <div className="form-field">
+            <label htmlFor="password">
+              Password:
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={this.model.state.formData.password}
+                onChange={this.controller.onChange}
+                placeholder="Password..."
+              />
+            </label>
+            {this.model.state.formErrors.password ? (
+              <span>{this.model.state.formErrors.password}</span>
+            ) : null}
+          </div>
+
+          <div className="form-field">
+            <label htmlFor="biography">
+              Biography:
+              <textarea
+                id="biography"
+                name="biography"
+                value={this.model.state.formData.biography}
+                onChange={this.controller.handleTextAreaChange}
+                placeholder="Biography..."
+              />
+            </label>
+            {this.model.state.formErrors.biography ? (
+              <span>{this.model.state.formErrors.biography}</span>
+            ) : null}
+          </div>
+
+          <div className="form-field">
+            <label htmlFor="dob">
+              Date of Birth:
+              <input
+                type="date"
+                id="dob"
+                name="dob"
+                value={this.model.state.formData.dob}
+                onChange={this.controller.onChange}
+                placeholder="Date Of Birth..."
+              />
+            </label>
+            {this.model.state.formErrors.dob ? (
+              <span>{this.model.state.formErrors.dob}</span>
+            ) : null}
+          </div>
+
+          <div className="form-field">
+            <label htmlFor="favoriteColor">
+              Favorite Color:
+              <input
+                type="color"
+                id="favoriteColor"
+                name="favoriteColor"
+                value={this.model.state.formData.favoriteColor}
+                onChange={this.controller.onChange}
+                placeholder="Favourite Color"
+              />
+            </label>
+            {this.model.state.formErrors.favoriteColor ? (
+              <span>{this.model.state.formErrors.favoriteColor}</span>
+            ) : null}
+            <br />
+          </div>
+
+          <div className="form-field">
+            <div className="gender-inputs">
+              <label htmlFor="gender">
+                Male:
+                <input
+                  type="radio"
+                  id="male"
+                  name="gender"
+                  value="male"
+                  checked={this.model.state.formData.gender === 'male'}
+                  onChange={this.controller.onChange}
+                  placeholder="Gender..."
+                />
+              </label>
+              <label htmlFor="gender">
+                Female:
+                <input
+                  type="radio"
+                  id="female"
+                  name="gender"
+                  value="female"
+                  checked={this.model.state.formData.gender === 'female'}
+                  onChange={this.controller.onChange}
+                  placeholder="Gender..."
+                />
+              </label>
+            </div>
+            {this.model.state.formErrors.gender ? (
+              <span>{this.model.state.formErrors.gender}</span>
+            ) : null}
+          </div>
+
+          <div className="form-field">
+            <label htmlFor="termsAndServices">
+              Agree to Terms And Services:
+              <input
+                type="checkbox"
+                id="termsAndServices"
+                name="termsAndServices"
+                checked={this.model.state.formData.termsAndServices}
+                onChange={this.controller.handleCheckboxChange}
+                placeholder="Terms and Services..."
+              />
+            </label>
+            {this.model.state.formErrors.termsAndServices ? (
+              <span>{this.model.state.formErrors.termsAndServices}</span>
+            ) : null}
+            <br />
+          </div>
 
           <input type="submit" value="Submit" />
         </FormStyled>
