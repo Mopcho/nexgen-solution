@@ -41,6 +41,7 @@ export class FormView extends React.Component<FormProps> {
     return (
       <div className="container">
         <FormStyled onSubmit={this.controller.onSubmit}>
+          <h3>PostBin Url : {`${this.controller.postbinService.postbinUrl}`}</h3>
           <p>Your Name : </p>
           <div className="names-container">
             <div>

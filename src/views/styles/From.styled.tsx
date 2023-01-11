@@ -9,12 +9,18 @@ const FormStyled = styled.form`
   border-radius: 10px;
   background-color: #f1faee;
 
+  h3 {
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+
   span {
     color: red;
     margin-bottom: 10px;
   }
 
-  label {
+  label,
+  p {
     font-weight: bold;
     display: block;
   }
