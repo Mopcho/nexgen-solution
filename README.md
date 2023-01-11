@@ -67,5 +67,5 @@ npx jest
 ## In case of Postbin Missing
 
 If for some reason the postbin link is not valid follow this link : https://requestbin.com/
-and under the big button there is another button "public bin". CLick on it and when the bin is created you will be able to see the endpoind in the upper right corner of the page. Copy the endpoint and place it inside of the .env file ! That's it !
+and under the big button there is another button "public bin". CLick on it and when the bin is created you will be able to see the endpoind in the upper right corner of the page. Copy the endpoint and place it inside of src/views/Form/index.ts on the 6th line
 
