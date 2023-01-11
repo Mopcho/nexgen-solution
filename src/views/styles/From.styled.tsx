@@ -12,6 +12,7 @@ const FormStyled = styled.form`
   h3 {
     margin: 0 auto;
     padding: 20px 0;
+    word-wrap: break-word;
   }
 
   span {
