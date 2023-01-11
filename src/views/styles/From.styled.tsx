@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FormStyled = styled.form`
+const FormStyled = styled.form`
   width: 50%;
   margin: 0 auto;
   text-align: left;
@@ -85,3 +85,5 @@ export const FormStyled = styled.form`
     margin: 0px 20px;
   }
 `;
+
+export default FormStyled;

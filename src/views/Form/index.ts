@@ -8,8 +8,10 @@ const controller = new FormController({
   pasteBinUrl: 'https://www.toptal.com/developers/postbin/1673436302002-0560769881121',
 });
 
-export const FormMVC = {
+const FormMVC = {
   model,
   controller,
   FormView,
 };
+
+export default FormMVC;

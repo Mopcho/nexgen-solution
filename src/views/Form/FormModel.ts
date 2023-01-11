@@ -71,7 +71,7 @@ export class FormModel {
   setData = (data: FormData) => {
     this.state.formData = { ...data };
     // Here we call all subscibed functions and execute them
-    for (let i = 0; i < this.subscribers.length; i++) {
+    for (let i = 0; i < this.subscribers.length; i += 1) {
       this.subscribers[i]({ formData: data, formErrors: this.state.formErrors });
     }
   };
@@ -79,7 +79,7 @@ export class FormModel {
   setErrors = (data: FormErrors) => {
     this.state.formErrors = { ...data };
     // Here we call all subscibed functions and execute them
-    for (let i = 0; i < this.subscribers.length; i++) {
+    for (let i = 0; i < this.subscribers.length; i += 1) {
       this.subscribers[i]({ formData: this.state.formData, formErrors: data });
     }
   };

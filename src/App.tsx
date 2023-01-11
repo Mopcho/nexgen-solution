@@ -1,12 +1,12 @@
 import React from 'react';
-import { FormMVC } from './views/Form';
+import FormMVC from './views/Form';
 
-export const App = () => {
+function App() {
   return (
-    <>
-      <div className="container">
-        <FormMVC.FormView model={FormMVC.model} controller={FormMVC.controller}></FormMVC.FormView>
-      </div>
-    </>
+    <div className="container">
+      <FormMVC.FormView model={FormMVC.model} controller={FormMVC.controller} />
+    </div>
   );
-};
+}
+
+export default App;
