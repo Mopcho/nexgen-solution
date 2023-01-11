@@ -9,6 +9,10 @@ export const FormStyled = styled.form`
   border-radius: 10px;
   background-color: #f1faee;
 
+  input {
+    margin-bottom: 10px;
+  }
+
   label {
     font-weight: bold;
     display: block;
@@ -22,7 +26,6 @@ export const FormStyled = styled.form`
   input[type='radio'] {
     display: inline-block;
     margin-right: 10px;
-    margin-bottom: 10px;
   }
 
   input[type='text'],
@@ -43,11 +46,38 @@ export const FormStyled = styled.form`
     border-radius: 4px;
     cursor: pointer;
     width: auto;
+    margin: 20px 0;
+
+    &:hover {
+      background-color: #003566;
+      color: #4caf50;
+
+      transform: scaleX(1.1) scaleY(1.1);
+    }
+  }
+
+  .names-container {
+    display: flex;
+    gap: 30px;
+  }
+
+  .gender-inputs {
+    display: flex;
+    padding: 20px 0px;
   }
 
   textarea {
     width: 100%;
     height: 200px;
     resize: none;
+  }
+
+  label[for='gender-male'],
+  label[for='gender-female'] {
+    display: inline-block;
+  }
+  input[type='radio'] {
+    display: inline-block;
+    margin: 0px 20px;
   }
 `;

@@ -20,6 +20,16 @@ export class FormController {
     this.model.setData({ ...this.model.state, [name]: value });
   }
 
+  handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = event.target;
+    this.model.setData({ ...this.model.state, [name]: checked });
+  };
+
+  handleTextAreaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    this.model.setData({ ...this.model.state, [name]: value });
+  };
+
   onSubmit(event: React.FormEvent) {
     event.preventDefault();
   }

@@ -1,18 +1,28 @@
 export interface FormData {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   biography: string;
+  dob: string;
+  favoriteColor: string;
+  termsAndServices: boolean;
+  gender: string;
 }
 
 // The model's responsibility is to hold the state and when
 // Changed by the Controller, to update the view
 export class FormModel {
   state: FormData = {
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
     biography: '',
+    dob: '',
+    favoriteColor: '#ffffff',
+    termsAndServices: false,
+    gender: '',
   };
 
   subscribers: Array<(...args: any[]) => any> = [];
