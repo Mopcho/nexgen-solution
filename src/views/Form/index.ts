@@ -1,11 +1,15 @@
 import { FormController } from './FormController';
 import { FormView } from './FormView';
 import { FormModel } from './FormModel';
+import PostBinService from '../../service/postbin';
 
+export const postbinService = new PostBinService(
+  'https://www.toptal.com/developers/postbin/1673447331127-9832910569384'
+);
 const model = new FormModel();
 const controller = new FormController({
   model,
-  pasteBinUrl: 'https://www.toptal.com/developers/postbin/1673436302002-0560769881121',
+  postbinService,
 });
 
 const FormMVC = {

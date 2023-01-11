@@ -1,8 +1,9 @@
+import PostBinService from '../../service/postbin';
 import { FormModel } from './FormModel';
 
 export interface FormControllerProps {
   model: FormModel;
-  pasteBinUrl: string;
+  postbinService: PostBinService;
 }
 
 /**
@@ -12,12 +13,12 @@ export interface FormControllerProps {
 export class FormController {
   model: FormModel;
 
-  pasteBinUrl: string;
+  postbinService: PostBinService;
 
   constructor(props: FormControllerProps) {
     this.model = props.model;
     this.onChange = this.onChange.bind(this);
-    this.pasteBinUrl = props.pasteBinUrl;
+    this.postbinService = props.postbinService;
   }
 
   onChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -161,14 +162,7 @@ export class FormController {
       formData.append('gender', this.model.state.formData.gender);
       formData.append('termsAndServices', this.model.state.formData.termsAndServices.toString());
       // Submit if no errors
-      await fetch(this.pasteBinUrl, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: formData,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      });
+      await this.postbinService.postToBin(formData);
     } catch (err) {
       console.error(err);
     } finally {
