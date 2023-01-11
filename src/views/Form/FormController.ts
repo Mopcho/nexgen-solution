@@ -100,7 +100,10 @@ export class FormController {
     const emailRegex =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!emailRegex.test(email)) {
-      this.model.setErrors({ ...this.model.state.formErrors, email: 'Must be a valid email' });
+      this.model.setErrors({
+        ...this.model.state.formErrors,
+        email: 'Must be a valid email',
+      });
     } else {
       this.model.setErrors({ ...this.model.state.formErrors, email: false });
     }
@@ -169,7 +172,7 @@ export class FormController {
     try {
       await this.postbinService.postToBin(this.model.state.formData);
     } catch (err) {
-      console.error(err);
+      // Do something with the error
     } finally {
       // Clear fields
       this.model.setData({
