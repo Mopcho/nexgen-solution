@@ -107,6 +107,23 @@ export class FormView extends React.Component<FormProps> {
           </div>
 
           <div className="form-field">
+            <label htmlFor="repeatPassword">
+              Repeat Password:
+              <input
+                type="password"
+                id="repeatPassword"
+                name="repeatPassword"
+                value={this.model.state.formData.repeatPassword}
+                onChange={this.controller.onChange}
+                placeholder="Repeat Password..."
+              />
+            </label>
+            {this.model.state.formErrors.repeatPassword ? (
+              <span>{this.model.state.formErrors.repeatPassword}</span>
+            ) : null}
+          </div>
+
+          <div className="form-field">
             <label htmlFor="biography">
               Biography:
               <textarea

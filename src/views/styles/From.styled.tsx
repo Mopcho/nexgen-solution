@@ -76,6 +76,7 @@ const FormStyled = styled.form`
   label[for='gender-female'] {
     display: inline-block;
   }
+
   input[type='radio'] {
     display: inline-block;
     margin: 0px 20px;

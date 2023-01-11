@@ -44,8 +44,17 @@ export class FormController {
     event.preventDefault();
 
     // ** Start of Validation **
-    const { firstName, lastName, email, password, biography, dob, termsAndServices, gender } =
-      this.model.state.formData;
+    const {
+      firstName,
+      lastName,
+      email,
+      password,
+      biography,
+      dob,
+      termsAndServices,
+      gender,
+      repeatPassword,
+    } = this.model.state.formData;
 
     // FirstName must be 3 characters long
     if (firstName.length < 3) {
@@ -75,6 +84,16 @@ export class FormController {
       });
     } else {
       this.model.setErrors({ ...this.model.state.formErrors, password: false });
+    }
+
+    // Repeat password must match password
+    if (repeatPassword !== password) {
+      this.model.setErrors({
+        ...this.model.state.formErrors,
+        repeatPassword: 'Must match password',
+      });
+    } else {
+      this.model.setErrors({ ...this.model.state.formErrors, repeatPassword: false });
     }
 
     // Email must be a valid email and pass the regex test
@@ -158,6 +177,7 @@ export class FormController {
         lastName: '',
         email: '',
         password: '',
+        repeatPassword: '',
         biography: '',
         dob: '',
         favoriteColor: '',

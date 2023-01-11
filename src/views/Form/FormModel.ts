@@ -3,6 +3,7 @@ export interface FormData {
   lastName: string;
   email: string;
   password: string;
+  repeatPassword: string;
   biography: string;
   dob: string;
   favoriteColor: string;
@@ -15,6 +16,7 @@ export interface FormErrors {
   lastName: string | false;
   email: string | false;
   password: string | false;
+  repeatPassword: string | false;
   biography: string | false;
   dob: string | false;
   favoriteColor: string | false;
@@ -36,6 +38,7 @@ export class FormModel {
       lastName: '',
       email: '',
       password: '',
+      repeatPassword: '',
       biography: '',
       dob: '',
       favoriteColor: '#ffffff',
@@ -47,6 +50,7 @@ export class FormModel {
       lastName: false,
       email: false,
       password: false,
+      repeatPassword: false,
       biography: false,
       dob: false,
       favoriteColor: false,
