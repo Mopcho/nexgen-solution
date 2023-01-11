@@ -8,6 +8,16 @@ const FormStyled = styled.form`
   border: 1px solid #ccc;
   border-radius: 10px;
   background-color: #f1faee;
+  animation: moveToRight 1s ease-in;
+
+  @keyframes moveToRight {
+    0% {
+      transform: translateX(-90%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
 
   h3 {
     margin: 0 auto;
@@ -90,6 +100,10 @@ const FormStyled = styled.form`
   input[name='favoriteColor'],
   input[name='dob'] {
     margin-left: 10px;
+  }
+
+  @media (max-width: 1024px) {
+    width: 80%;
   }
 `;
 
