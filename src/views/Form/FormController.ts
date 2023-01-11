@@ -148,10 +148,6 @@ export class FormController {
     }
 
     try {
-      // Here we are making a formData as PostBin blocks us with CORS, so we
-      // are forced to use the 'no-cors' mode which allows us to send only
-      // application/x-www-form-urlencoded or text/plain or multipart/form-data
-      // Submit if no errors
       await this.postbinService.postToBin(this.model.state.formData);
     } catch (err) {
       console.error(err);
