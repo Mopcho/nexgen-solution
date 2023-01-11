@@ -1,6 +1,6 @@
 import { FormStyled } from '../styles/From.styled';
 import React from 'react';
-import { FormModel } from './FormModel';
+import { FormModel, FormModelState } from './FormModel';
 import { FormController } from './FormController';
 
 export interface FormProps {
@@ -29,7 +29,7 @@ export class FormView extends React.Component<FormProps> {
     this.model.unsubscribe(this.updateState);
   }
 
-  updateState = (newData: FormData) => {
+  updateState = (newData: FormModelState) => {
     this.setState({ ...newData });
   };
 
@@ -39,24 +39,33 @@ export class FormView extends React.Component<FormProps> {
         <FormStyled onSubmit={this.controller.onSubmit}>
           <label htmlFor="first-name">Your Name :</label>
           <div className="names-container">
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              value={this.model.state.firstName}
-              onChange={this.controller.onChange}
-              placeholder="First Name..."
-            />
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              value={this.model.state.lastName}
-              onChange={this.controller.onChange}
-              placeholder="Last Name..."
-            />
+            <div>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                value={this.model.state.formData.firstName}
+                onChange={this.controller.onChange}
+                placeholder="First Name..."
+              />
+              {this.model.state.formErrors.firstName ? (
+                <span>{this.model.state.formErrors.firstName}</span>
+              ) : null}
+            </div>
+            <div>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                value={this.model.state.formData.lastName}
+                onChange={this.controller.onChange}
+                placeholder="Last Name..."
+              />
+              {this.model.state.formErrors.lastName ? (
+                <span>{this.model.state.formErrors.lastName}</span>
+              ) : null}
+            </div>
           </div>
-
           <br />
 
           <label htmlFor="email">Email:</label>
@@ -64,10 +73,13 @@ export class FormView extends React.Component<FormProps> {
             type="text"
             id="email"
             name="email"
-            value={this.model.state.email}
+            value={this.model.state.formData.email}
             onChange={this.controller.onChange}
             placeholder="Email..."
           />
+          {this.model.state.formErrors.email ? (
+            <span>{this.model.state.formErrors.email}</span>
+          ) : null}
           <br />
 
           <label htmlFor="password">Password:</label>
@@ -75,39 +87,51 @@ export class FormView extends React.Component<FormProps> {
             type="password"
             id="password"
             name="password"
-            value={this.model.state.password}
+            value={this.model.state.formData.password}
             onChange={this.controller.onChange}
             placeholder="Password..."
           />
+          {this.model.state.formErrors.password ? (
+            <span>{this.model.state.formErrors.password}</span>
+          ) : null}
 
-          <label htmlFor="bio">Biography:</label>
+          <label htmlFor="biography">Biography:</label>
           <textarea
             id="biography"
             name="biography"
-            value={this.model.state.biography}
+            value={this.model.state.formData.biography}
             onChange={this.controller.handleTextAreaChange}
             placeholder="Biography..."
           />
+          {this.model.state.formErrors.biography ? (
+            <span>{this.model.state.formErrors.biography}</span>
+          ) : null}
 
-          <label htmlFor="password">Date of Birth:</label>
+          <label htmlFor="dob">Date of Birth:</label>
           <input
             type="date"
             id="dob"
             name="dob"
-            value={this.model.state.dob}
+            value={this.model.state.formData.dob}
             onChange={this.controller.onChange}
             placeholder="Date Of Birth..."
           />
+          <br />
+          {this.model.state.formErrors.dob ? <span>{this.model.state.formErrors.dob}</span> : null}
 
-          <label htmlFor="password">Favorite Color:</label>
+          <label htmlFor="favoriteColor">Favorite Color:</label>
           <input
             type="color"
             id="favoriteColor"
             name="favoriteColor"
-            value={this.model.state.favoriteColor}
+            value={this.model.state.formData.favoriteColor}
             onChange={this.controller.onChange}
             placeholder="Favourite Color"
           />
+          {this.model.state.formErrors.favoriteColor ? (
+            <span>{this.model.state.formErrors.favoriteColor}</span>
+          ) : null}
+          <br />
 
           <div className="gender-inputs">
             <label htmlFor="gender">Male:</label>
@@ -116,7 +140,7 @@ export class FormView extends React.Component<FormProps> {
               id="male"
               name="gender"
               value="male"
-              checked={this.model.state.gender === 'male'}
+              checked={this.model.state.formData.gender === 'male'}
               onChange={this.controller.onChange}
               placeholder="Gender..."
             />
@@ -126,21 +150,28 @@ export class FormView extends React.Component<FormProps> {
               id="female"
               name="gender"
               value="female"
-              checked={this.model.state.gender === 'female'}
+              checked={this.model.state.formData.gender === 'female'}
               onChange={this.controller.onChange}
               placeholder="Gender..."
             />
           </div>
+          {this.model.state.formErrors.gender ? (
+            <span>{this.model.state.formErrors.gender}</span>
+          ) : null}
 
-          <label htmlFor="password">Agree to Terms And Services:</label>
+          <label htmlFor="termsAndServices">Agree to Terms And Services:</label>
           <input
             type="checkbox"
             id="termsAndServices"
             name="termsAndServices"
-            checked={this.model.state.termsAndServices}
+            checked={this.model.state.formData.termsAndServices}
             onChange={this.controller.handleCheckboxChange}
             placeholder="Terms and Services..."
           />
+          <br />
+          {this.model.state.formErrors.termsAndServices ? (
+            <span>{this.model.state.formErrors.termsAndServices}</span>
+          ) : null}
           <br />
 
           <input type="submit" value="Submit" />

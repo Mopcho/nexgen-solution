@@ -13,6 +13,10 @@ export const FormStyled = styled.form`
     margin-bottom: 10px;
   }
 
+  span {
+    color: red;
+  }
+
   label {
     font-weight: bold;
     display: block;

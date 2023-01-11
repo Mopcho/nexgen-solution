@@ -10,35 +10,77 @@ export interface FormData {
   gender: string;
 }
 
-// The model's responsibility is to hold the state and when
-// Changed by the Controller, to update the view
+export interface FormErrors {
+  firstName: string | false;
+  lastName: string | false;
+  email: string | false;
+  password: string | false;
+  biography: string | false;
+  dob: string | false;
+  favoriteColor: string | false;
+  termsAndServices: string | false;
+  gender: string | false;
+}
+
+export interface FormModelState {
+  formData: FormData;
+  formErrors: FormErrors;
+}
+
+// The model's responsibility is to hold the state
 export class FormModel {
-  state: FormData = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    biography: '',
-    dob: '',
-    favoriteColor: '#ffffff',
-    termsAndServices: false,
-    gender: '',
+  state: FormModelState = {
+    formData: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      biography: '',
+      dob: '',
+      favoriteColor: '#ffffff',
+      termsAndServices: false,
+      gender: '',
+    },
+    formErrors: {
+      firstName: false,
+      lastName: false,
+      email: false,
+      password: false,
+      biography: false,
+      dob: false,
+      favoriteColor: false,
+      termsAndServices: false,
+      gender: false,
+    },
   };
 
-  subscribers: Array<(...args: any[]) => any> = [];
+  // We use a subscriber pattern here in order for the view
+  // to be able to subscribe a updateView function
+  // and when a state change occurs to execute it
+  // ! an alternative is using Redux !
+  subscribers: Array<(formState: FormModelState) => void> = [];
 
-  subscribe = (fn: (...args: any[]) => any) => {
+  subscribe = (fn: (formState: FormModelState) => void) => {
     this.subscribers.push(fn);
   };
 
-  unsubscribe = (fn: (...args: any[]) => any) => {
+  unsubscribe = (fn: (formState: FormModelState) => void) => {
     this.subscribers.filter((sub) => sub !== fn);
   };
 
   setData = (data: FormData) => {
-    this.state = { ...data };
+    this.state.formData = { ...data };
+    // Here we call all subscibed functions and execute them
     for (let i = 0; i < this.subscribers.length; i++) {
-      this.subscribers[i](data);
+      this.subscribers[i]({ formData: data, formErrors: this.state.formErrors });
+    }
+  };
+
+  setErrors = (data: FormErrors) => {
+    this.state.formErrors = { ...data };
+    // Here we call all subscibed functions and execute them
+    for (let i = 0; i < this.subscribers.length; i++) {
+      this.subscribers[i]({ formData: this.state.formData, formErrors: data });
     }
   };
 }
