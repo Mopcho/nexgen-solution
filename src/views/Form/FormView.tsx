@@ -71,7 +71,6 @@ export class FormView extends React.Component<FormProps> {
               ) : null}
             </div>
           </div>
-          <br />
 
           <div className="form-field">
             <label htmlFor="email">
@@ -88,7 +87,6 @@ export class FormView extends React.Component<FormProps> {
             {this.model.state.formErrors.email ? (
               <span>{this.model.state.formErrors.email}</span>
             ) : null}
-            <br />
           </div>
 
           <div className="form-field">
@@ -156,7 +154,6 @@ export class FormView extends React.Component<FormProps> {
             {this.model.state.formErrors.favoriteColor ? (
               <span>{this.model.state.formErrors.favoriteColor}</span>
             ) : null}
-            <br />
           </div>
 
           <div className="form-field">
@@ -206,7 +203,6 @@ export class FormView extends React.Component<FormProps> {
             {this.model.state.formErrors.termsAndServices ? (
               <span>{this.model.state.formErrors.termsAndServices}</span>
             ) : null}
-            <br />
           </div>
 
           <input type="submit" value="Submit" />

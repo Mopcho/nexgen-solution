@@ -30,6 +30,7 @@ const FormStyled = styled.form`
   label[for='gender-female'] {
     display: inline-block;
   }
+
   input[type='radio'] {
     display: inline-block;
     margin-right: 10px;
@@ -90,8 +91,10 @@ const FormStyled = styled.form`
     padding: 15px 0px;
   }
 
-  input[for='termsAndServices'] {
-    margin-left: 5px;
+  input[name='termsAndServices'],
+  input[name='favoriteColor'],
+  input[name='dob'] {
+    margin-left: 10px;
   }
 `;
 
