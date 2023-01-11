@@ -27,7 +27,8 @@ export interface FormModelState {
   formErrors: FormErrors;
 }
 
-// The model's responsibility is to hold the state
+// The model's responsibility is to hold the state and on every
+// state change to call it's subscribers which are functions
 export class FormModel {
   state: FormModelState = {
     formData: {
@@ -56,7 +57,7 @@ export class FormModel {
 
   // We use a subscriber pattern here in order for the view
   // to be able to subscribe a updateView function
-  // and when a state change occurs to execute it
+  // and when a state change occurs, to execute it
   // ! an alternative is using Redux !
   subscribers: Array<(formState: FormModelState) => void> = [];
 
@@ -68,6 +69,7 @@ export class FormModel {
     this.subscribers.filter((sub) => sub !== fn);
   };
 
+  // When we want to set the formData we use this
   setData = (data: FormData) => {
     this.state.formData = { ...data };
     // Here we call all subscibed functions and execute them
@@ -76,6 +78,7 @@ export class FormModel {
     }
   };
 
+  // When we want to set the formErrors, we use this
   setErrors = (data: FormErrors) => {
     this.state.formErrors = { ...data };
     // Here we call all subscibed functions and execute them

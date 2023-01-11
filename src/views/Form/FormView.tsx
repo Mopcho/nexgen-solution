@@ -21,6 +21,10 @@ export class FormView extends React.Component<FormProps> {
     this.state = this.model.state;
   }
 
+  // On mount, we subscribe our updateState function to
+  // the model so whenever the model changes state
+  // the view will change its state too in order ro
+  // trigger a rerender
   componentDidMount() {
     this.model.subscribe(this.updateState);
   }

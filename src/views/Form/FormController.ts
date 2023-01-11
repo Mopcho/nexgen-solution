@@ -7,6 +7,7 @@ export interface FormControllerProps {
 
 /**
  * The controller is responsible for business logic and updating the model
+ * It holds info about the model and the pasteBinUrl needed to make the requets
  */
 export class FormController {
   model: FormModel;
@@ -34,13 +35,18 @@ export class FormController {
     this.model.setData({ ...this.model.state.formData, [name]: value });
   };
 
+  /**
+   * We first Validate the FormData in the model and if there areno errors
+   * we proceed with making a POST request with the formData to the pasteBinUrl
+   */
   onSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    // Validate
+    // ** Start of Validation **
     const { firstName, lastName, email, password, biography, dob, termsAndServices, gender } =
       this.model.state.formData;
 
+    // FirstName must be 3 characters long
     if (firstName.length < 3) {
       this.model.setErrors({
         ...this.model.state.formErrors,
@@ -50,6 +56,7 @@ export class FormController {
       this.model.setErrors({ ...this.model.state.formErrors, firstName: false });
     }
 
+    // LastName must be 3 characters long
     if (lastName.length < 3) {
       this.model.setErrors({
         ...this.model.state.formErrors,
@@ -59,6 +66,7 @@ export class FormController {
       this.model.setErrors({ ...this.model.state.formErrors, lastName: false });
     }
 
+    // Password must be 8 characters long
     if (password.length < 8) {
       this.model.setErrors({
         ...this.model.state.formErrors,
@@ -68,6 +76,7 @@ export class FormController {
       this.model.setErrors({ ...this.model.state.formErrors, password: false });
     }
 
+    // Email must be a valid email and pass the regex test
     const emailRegex =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!emailRegex.test(email)) {
@@ -76,6 +85,7 @@ export class FormController {
       this.model.setErrors({ ...this.model.state.formErrors, email: false });
     }
 
+    // Biography must be at least 20 characters long
     if (biography.length < 20) {
       this.model.setErrors({
         ...this.model.state.formErrors,
@@ -85,6 +95,7 @@ export class FormController {
       this.model.setErrors({ ...this.model.state.formErrors, biography: false });
     }
 
+    // User must be at least 18 years old and date should be valid
     if (dob) {
       const today = new Date();
       const birthDate = new Date(dob);
@@ -105,6 +116,7 @@ export class FormController {
       });
     }
 
+    // Gender should be either male or female
     if (gender !== 'male' && gender !== 'female') {
       this.model.setErrors({
         ...this.model.state.formErrors,
@@ -114,6 +126,7 @@ export class FormController {
       this.model.setErrors({ ...this.model.state.formErrors, gender: false });
     }
 
+    // User must accept terms and services
     if (!termsAndServices) {
       this.model.setErrors({
         ...this.model.state.formErrors,
@@ -122,6 +135,7 @@ export class FormController {
     } else {
       this.model.setErrors({ ...this.model.state.formErrors, termsAndServices: false });
     }
+    // ** End of validation **
 
     // If there are errors, end the execution here
     const areAllFalse = Object.values(this.model.state.formErrors).every(
@@ -156,7 +170,7 @@ export class FormController {
         },
       });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     } finally {
       // Clear fields
       this.model.setData({
