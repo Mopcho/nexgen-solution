@@ -12,15 +12,15 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Mopcho/react-typescript-webpack.git"
+        "url": "git+https://github.com/Mopcho/nexgen-solution.git"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/Mopcho/react-typescript-webpack/issues"
+        "url": "https://github.com/Mopcho/nexgen-solution/issues"
     },
-    "homepage": "https://github.com/Mopcho/react-typescript-webpack#readme",
+    "homepage": "https://github.com/Mopcho/nexgen-solution#readme",
     "dependencies": {
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
