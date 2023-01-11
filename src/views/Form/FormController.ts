@@ -2,6 +2,7 @@ import { FormModel } from './FormModel';
 
 export interface FormControllerProps {
   model: FormModel;
+  pasteBinUrl: string;
 }
 
 /**
@@ -10,9 +11,12 @@ export interface FormControllerProps {
 export class FormController {
   model: FormModel;
 
+  pasteBinUrl: string;
+
   constructor(props: FormControllerProps) {
     this.model = props.model;
     this.onChange = this.onChange.bind(this);
+    this.pasteBinUrl = props.pasteBinUrl;
   }
 
   onChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -30,7 +34,7 @@ export class FormController {
     this.model.setData({ ...this.model.state.formData, [name]: value });
   };
 
-  onSubmit = (event: React.FormEvent) => {
+  onSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
     // Validate
@@ -128,7 +132,44 @@ export class FormController {
       return;
     }
 
-    // Submit if no errors
-    console.log('Validation Passed');
+    try {
+      // Here we are making a formData as PostBin blocks us with CORS, so we
+      // are forced to use the 'no-cors' mode which allows us to send only
+      // application/x-www-form-urlencoded or text/plain or multipart/form-data
+      const formData = new FormData();
+      formData.append('firstName', this.model.state.formData.firstName);
+      formData.append('lastName', this.model.state.formData.lastName);
+      formData.append('email', this.model.state.formData.email);
+      formData.append('password', this.model.state.formData.password);
+      formData.append('biography', this.model.state.formData.biography);
+      formData.append('dob', this.model.state.formData.dob);
+      formData.append('favoriteColor', this.model.state.formData.favoriteColor);
+      formData.append('gender', this.model.state.formData.gender);
+      formData.append('termsAndServices', this.model.state.formData.termsAndServices.toString());
+      // Submit if no errors
+      await fetch(this.pasteBinUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      // Clear fields
+      this.model.setData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        biography: '',
+        dob: '',
+        favoriteColor: '',
+        termsAndServices: false,
+        gender: '',
+      });
+    }
   };
 }
