@@ -42,6 +42,9 @@ export class FormView extends React.Component<FormProps> {
       <div className="container">
         <FormStyled onSubmit={this.controller.onSubmit}>
           <h3>PostBin Url: https://requestbin.com/r/enqbr0y95vpih/2KBWiULx9uV9AJw2Cgo8bHKyI1u</h3>
+          <legend>
+            <span className="number">1</span> Main Info
+          </legend>
           <p>Your Name: </p>
           <div className="names-container">
             <div>
@@ -122,6 +125,10 @@ export class FormView extends React.Component<FormProps> {
               <span>{this.model.state.formErrors.repeatPassword}</span>
             ) : null}
           </div>
+
+          <legend>
+            <span className="number">2</span> Additional Info
+          </legend>
 
           <div className="form-field">
             <label htmlFor="biography">

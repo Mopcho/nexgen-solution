@@ -19,6 +19,23 @@ const FormStyled = styled.form`
     }
   }
 
+  .number {
+    color: #f1faee;
+    background-color: #003566;
+    border-radius: 50px 50px 50px 0px;
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+  }
+
+  legend {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+
   h3 {
     margin: 0 auto;
     padding: 20px 0;
